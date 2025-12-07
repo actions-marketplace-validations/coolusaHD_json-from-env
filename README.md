@@ -22,6 +22,8 @@ Comma-separated string of entity values.
 
 ## Usage
 
+Change `[version]` to the latest version of this GitHub Action.
+
 ```yaml
 name: Generate JSON
 
@@ -35,23 +37,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Generate JSON
         id: generate-json
-        uses: your-username/your-repo@v1
+        uses: coolusaHD/json-from-env@[version]
         with:
           file-path: 'output.json'
-          entity-names: 'name1,name2,name3'
-          entity-values: 'value1,value2,value3'
+          entity-names: 'name1,NAME_2,NAME_3'
+          entity-values: 'value1,VALUE_2,${{ secrets.NAME_3 }}'
 
       - name: Upload JSON Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: generated-json
           path: output.json
-```
-
 ```
 
 ## Example Workflow
@@ -66,15 +66,5 @@ for details.
 
 ## Contribution
 
-Contributions are welcome! Here's how you can get started:
-
-1. Fork the repository.
-2. Clone your forked repository locally.
-3. Create a new branch for your feature or bug fix:
-   `git checkout -b feature/my-feature`.
-4. Make your changes and commit them with descriptive messages.
-5. Push your changes to your fork on GitHub:
-   `git push origin feature/my-feature`.
-6. Open a pull request to the `main` branch of this repository.
-7. Please make sure to update tests and documentation as necessary.
-```
+Contributions are welcome! Create a fork of this project, commit your changes
+and open a pull request.
